@@ -74,16 +74,13 @@ public class User {
         return status;
     }
 
-
-
     @Override
     public String toString() {
         return "User{" +
                 "idUser=" + idUser +
                 ", name='" + name + '\'' +
                 ", namab=" + age +
-                ", ahihi'" + email + '\'' +
-                ", address='" + address + '\'' +
+                ",nam al='" + address + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
                 '}';
