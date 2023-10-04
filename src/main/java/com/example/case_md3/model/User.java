@@ -74,9 +74,7 @@ public class User {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+
 
     @Override
     public String toString() {
