@@ -81,7 +81,7 @@ public class User {
                 ", na242424me='" + name + '\'' +
                 ", namab=" + age +
                 ",nam al='" + address + '\'' +
-                ", password='" + password + '\'' +
+                ", paaaaaard='" + password + '\'' +
                 ", sssssstatus=" + status +
                 '}';
     }
