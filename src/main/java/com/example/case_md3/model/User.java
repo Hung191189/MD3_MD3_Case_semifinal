@@ -83,8 +83,8 @@ public class User {
         return "User{" +
                 "idUser=" + idUser +
                 ", name='" + name + '\'' +
-                ", nam ab=" + age +
-                ", nam al'" + email + '\'' +
+                ", namab=" + age +
+                ", ahihi'" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
