@@ -80,7 +80,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "idUser=" + idUser +
-                ", name='" + name + '\'' +
+                ", nameee='" + name + '\'' +
                 ", namab=" + age +
                 ", ahihi'" + email + '\'' +
                 ", address='" + address + '\'' +
