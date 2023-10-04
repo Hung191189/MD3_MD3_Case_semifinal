@@ -77,8 +77,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "i232424er=" + idUser +
-                ", na242424me='" + name + '\'' +
+                "idUser=" + idUser +
+                ", name='" + name + '\'' +
                 ", namab=" + age +
                 ",nam al='" + address + '\'' +
                 ", paaaaaard='" + password + '\'' +
