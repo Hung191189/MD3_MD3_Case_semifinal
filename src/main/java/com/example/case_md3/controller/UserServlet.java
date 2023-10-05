@@ -39,6 +39,9 @@ public class UserServlet extends HttpServlet {
             case "viewUser":
                 showUser(request, response);
                 break;
+            case "findByName":
+//                showFindByName(request, response);
+                break;
             default:
                 showListUser(request, response);
                 break;
@@ -49,6 +52,25 @@ public class UserServlet extends HttpServlet {
 //        request.getRequestDispatcher("user/listUser.jsp").forward(request, response);
 
     }
+
+//    private void showFindByName(HttpServletRequest request, HttpServletResponse response) {
+//        String name = request.getParameter("name");
+//        List<User> userList = userService.findByName(name);
+//        RequestDispatcher dispatcher;
+//        if(userList == null){
+//            dispatcher = request.getRequestDispatcher("error-404.jsp");
+//        }else {
+//            request.setAttribute("user", userList);
+//            dispatcher = request.getRequestDispatcher("user/listUser.jsp");
+//        }
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private void restoreUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -159,9 +181,25 @@ public class UserServlet extends HttpServlet {
             case "updateUser":
                 updateUser(request, response);
                 break;
+            case "findByName":
+                findByName(request, response);
+                break;
             default:
         }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void findByName(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList = userService.findByName("name");
+        request.setAttribute("userByName", userList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/viewFindBN.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
