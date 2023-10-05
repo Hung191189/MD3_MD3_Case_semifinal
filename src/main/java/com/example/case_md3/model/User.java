@@ -8,8 +8,27 @@ public class User {
     private String address;
     private String password;
     private int status;
-
+    private static int INDEX = 0;
     public User() {
+    }
+
+    public User(String name, int age, String email, String address, String password, int status) {
+        this.idUser = ++INDEX;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.status = status;
+    }
+
+    public User(int idUser, String name, int age, String email, String address, int status) {
+        this.idUser = idUser;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.address = address;
+        this.status = status;
     }
 
     public User(int idUser, String name, int age, String email, String address, String password, int status) {
