@@ -74,15 +74,7 @@ public class User {
         return status;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "idUser=" + idUser +
-                ", name='" + name + '\'' +
-                ", namab=" + age +
-                ",nam al='" + address + '\'' +
-                ", paaaaaard='" + password + '\'' +
-                ", sssssstatus=" + status +
-                '}';
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
