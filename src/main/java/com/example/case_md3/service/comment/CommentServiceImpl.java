@@ -26,11 +26,12 @@ public class CommentServiceImpl implements CommentService{
             PreparedStatement preparedStatement = connection.prepareStatement("select * from comment");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
+                int idComment = rs.getInt("idComment");
                 String content = rs.getString("content");
                 int idUser = rs.getInt("idUser");
                 int idPosts = rs.getInt("idPosts");
                 int status = rs.getInt("status");
-                commentList.add(new Comment(content, idUser, idPosts, status));
+                commentList.add(new Comment(idComment, content, idUser, idPosts, status));
             }
         } catch (SQLException e) {
             e.printStackTrace();

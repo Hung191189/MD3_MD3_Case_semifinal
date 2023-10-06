@@ -16,9 +16,9 @@
 <c:forEach items="${commentList}" var="comment">
     <c:if test="${comment.status == 1}">
         <p>${comment.idComment},
-            <a href="/CommentServlet?action=viewComment&id=${comment.idUser}">${comment.content}</a>, ${comment.dateComment}, ${comment.idUser}, ${comment.idPosts}, ${comment.status}
-            <a href="/CommentServlet?action=deleteComment&id=${comment.idUser}">Delete</a>,
-            <a href="/CommentServlet?action=updateComment&id=${comment.idUser}">Edit</a>
+            <a href="/CommentServlet?action=viewComment&id=${comment.idComment}">${comment.content}</a>, ${comment.dateComment}, ${comment.idUser}, ${comment.idPosts}, ${comment.status}
+            <a href="/CommentServlet?action=deleteComment&id=${comment.idComment}">Delete</a>,
+            <a href="/CommentServlet?action=updateComment&id=${comment.idComment}">Edit</a>
         </p>
     </c:if>
 </c:forEach>
@@ -26,8 +26,8 @@
 <c:forEach items="${commentList}" var="commnet">
     <c:if test="${commnet.status == 0}">
         <p>${commnet.idComment},
-            <a href="/CommentServlet?action=viewComment&id=${commnet.idComment}">${commnet.name}</a>, ${comment.dateComment}, ${comment.idUser}, ${comment.idPosts}, ${comment.status}
-            <a href="/CommentServlet?action=restoreCommnet&id=${commnet.idComment}">Restore</a>,
+            <a href="/CommentServlet?action=viewComment&id=${commnet.idComment}">${commnet.content}</a>, ${comment.dateComment}, ${comment.idUser}, ${comment.idPosts}, ${comment.status}
+            <a href="/CommentServlet?action=restoreComment&id=${commnet.idComment}">Restore</a>,
 
         </p>
     </c:if>

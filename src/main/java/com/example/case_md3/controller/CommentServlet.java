@@ -108,7 +108,7 @@ public class CommentServlet extends HttpServlet {
     private void restoreUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         commentService1.restore(id);
-        List<Comment> commentList = new ArrayList<>();
+        List<Comment> commentList;
         commentList = commentService.findAll();
         request.setAttribute("commentList", commentList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("comment/listComment.jsp");
