@@ -53,24 +53,6 @@ public class UserServlet extends HttpServlet {
 
     }
 
-//    private void showFindByName(HttpServletRequest request, HttpServletResponse response) {
-//        String name = request.getParameter("name");
-//        List<User> userList = userService.findByName(name);
-//        RequestDispatcher dispatcher;
-//        if(userList == null){
-//            dispatcher = request.getRequestDispatcher("error-404.jsp");
-//        }else {
-//            request.setAttribute("user", userList);
-//            dispatcher = request.getRequestDispatcher("user/listUser.jsp");
-//        }
-//        try {
-//            dispatcher.forward(request, response);
-//        } catch (ServletException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     private void restoreUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
