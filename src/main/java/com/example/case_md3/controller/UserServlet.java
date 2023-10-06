@@ -39,9 +39,6 @@ public class UserServlet extends HttpServlet {
             case "viewUser":
                 showUser(request, response);
                 break;
-//            case "findByName":
-//                showFindByName(request, response);
-//                break;
             default:
                 showListUser(request, response);
                 break;
@@ -188,7 +185,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -198,14 +195,16 @@ public class UserServlet extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
         User user = new User(id, name, age, email, address, password, status);
         userService.update(user);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/updateUser.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        showListUser(request,response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/updateUser.jsp");
+////        response.sendRedirect("/UserServlet");
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void saveUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {

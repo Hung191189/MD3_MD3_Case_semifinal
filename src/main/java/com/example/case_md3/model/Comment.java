@@ -22,6 +22,21 @@ public class Comment {
         this.status = status;
     }
 
+    public Comment(int idComment, String content, int idUser, int idPosts, int status) {
+        this.idComment = idComment;
+        this.content = content;
+        this.idUser = idUser;
+        this.idPosts = idPosts;
+        this.status = status;
+    }
+
+    public Comment(String content, int idUser, int idPosts, int status) {
+        this.content = content;
+        this.idUser = idUser;
+        this.idPosts = idPosts;
+        this.status = status;
+    }
+
     public int getStatus() {
         return status;
     }

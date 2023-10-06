@@ -10,5 +10,6 @@
 <br/>
 <a href="UserServlet">User</a>
 <a href="CategoryServlet">Category</a>
+<a href="CommentServlet">Comment</a>
 </body>
 </html>
