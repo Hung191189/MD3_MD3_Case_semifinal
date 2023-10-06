@@ -1,8 +1,10 @@
 package com.example.case_md3.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Posts {
+    private static Date date = new Date();
     private int idPosts;
     private String titlePosts;
     private String content;
@@ -20,6 +22,25 @@ public class Posts {
         this.content = content;
         this.status = status;
         this.datePosts = datePosts;
+        this.idUser = idUser;
+        this.idCategory = idCategory;
+    }
+
+    public Posts(int idPosts, String titlePosts, String content, int status, int idUser, int idCategory) {
+        this.idPosts = idPosts;
+        this.titlePosts = titlePosts;
+        this.content = content;
+        this.status = status;
+        this.datePosts = date;
+        this.idUser = idUser;
+        this.idCategory = idCategory;
+    }
+
+    public Posts(String titlePosts, String content, int status, int idUser, int idCategory) {
+        this.titlePosts = titlePosts;
+        this.content = content;
+        this.status = status;
+        this.datePosts = date;
         this.idUser = idUser;
         this.idCategory = idCategory;
     }

@@ -8,6 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
+<a href="PostsServlet">Post</a>
 <a href="UserServlet">User</a>
 <a href="CategoryServlet">Category</a>
 <a href="CommentServlet">Comment</a>
