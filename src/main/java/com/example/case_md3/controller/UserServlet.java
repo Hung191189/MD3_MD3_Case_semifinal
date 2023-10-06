@@ -39,9 +39,9 @@ public class UserServlet extends HttpServlet {
             case "viewUser":
                 showUser(request, response);
                 break;
-            case "findByName":
+//            case "findByName":
 //                showFindByName(request, response);
-                break;
+//                break;
             default:
                 showListUser(request, response);
                 break;
@@ -140,7 +140,7 @@ public class UserServlet extends HttpServlet {
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
         userService.delete(id);
-        List<User> userList = new ArrayList<>();
+        List<User> userList;
         userList = userService.findAll();
         request.setAttribute("user", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/listUser.jsp");
@@ -185,6 +185,7 @@ public class UserServlet extends HttpServlet {
                 findByName(request, response);
                 break;
             default:
+
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -192,7 +193,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void findByName(HttpServletRequest request, HttpServletResponse response) {
-        List<User> userList = userService.findByName("name");
+        String a = request.getParameter("nameSearch");
+        List<User> userList = userService.findByName(a);
         request.setAttribute("userByName", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/viewFindBN.jsp");
         try {

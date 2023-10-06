@@ -118,6 +118,7 @@ public class UserServiceImpl implements UserService {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("select * from user ");
             ResultSet rs = preparedStatement.executeQuery();
+
             while (rs.next()){
                 String name = rs.getString("name");
                 if (name.contains(a)){

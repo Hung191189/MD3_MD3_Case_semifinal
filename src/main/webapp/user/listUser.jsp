@@ -33,9 +33,9 @@
     </c:if>
 </c:forEach>
 <h1>find by name</h1>
-<form method="post">
-    <input type="text" name="name">
-    <a href="/UserServlet?action=findByName"><input type="submit"></a>
+<form action="UserServlet?action=findByName" method="post">
+    <input type="text" name="nameSearch">
+    <input type="submit" value="search">
 </form>
 
 </body>
