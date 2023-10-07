@@ -119,9 +119,9 @@ public class UserServiceImpl implements UserService {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from user ");
             ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()){
+            while (rs.next()) {
                 String name = rs.getString("name");
-                if (name.contains(a)){
+                if (name.contains(a)) {
                     int age = rs.getInt("age");
                     String email = rs.getString("email");
                     String address = rs.getString("address");
@@ -131,13 +131,11 @@ public class UserServiceImpl implements UserService {
                 }
 
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return userList;
     }
-
 
 
     @Override
@@ -149,7 +147,7 @@ public class UserServiceImpl implements UserService {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
                 String email = rs.getString("email");
@@ -157,11 +155,36 @@ public class UserServiceImpl implements UserService {
                 int status = rs.getInt("status");
                 user = new User(id, name, age, email, address, status);
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
 
+    }
+
+    public boolean checkLogin(String name, String password) throws Exception {
+        boolean blCheck = false;
+        ResultSet rs = null;
+        PreparedStatement preparedStatement = null;
+        Connection connection = null;
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement("select * from user where name = ? and password = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, password);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                blCheck = true;
+            }
+        } finally {
+            if (rs == null) {
+                rs.close();
+            }if(preparedStatement != null){
+                preparedStatement.close();
+            }if(connection != null){
+                connection.close();
+            }
+        }
+        return blCheck;
     }
 }

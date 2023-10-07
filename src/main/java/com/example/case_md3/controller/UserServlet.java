@@ -39,6 +39,9 @@ public class UserServlet extends HttpServlet {
             case "viewUser":
                 showUser(request, response);
                 break;
+            case "login":
+                showLogin(request, response);
+                break;
             default:
                 showListUser(request, response);
                 break;
@@ -48,6 +51,11 @@ public class UserServlet extends HttpServlet {
         }
 //        request.getRequestDispatcher("user/listUser.jsp").forward(request, response);
 
+    }
+
+    private void showLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/loginForm.jsp");
+        dispatcher.forward(request, response);
     }
 
 
@@ -163,11 +171,30 @@ public class UserServlet extends HttpServlet {
             case "findByName":
                 findByName(request, response);
                 break;
+            case "login":
+                loginUser(request, response);
+                break;
             default:
 
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loginUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String userName = request.getParameter("name");
+        String password = request.getParameter("password");
+        if(userService1.checkLogin(userName, password)){
+            request.setAttribute("name", userName);
+            HttpSession session = request.getSession();
+            session.setAttribute("name", userName);
+//            Thay đổi đường dẫn đến trang phù hợp
+            response.sendRedirect("index.jsp");
+        } else {
+            response.sendRedirect("/UserServlet?action=login");
         }
     }
 

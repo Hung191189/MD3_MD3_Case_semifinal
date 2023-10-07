@@ -21,6 +21,7 @@
             <a href="/UserServlet?action=updateUser&id=${user.idUser}">Edit</a>
         </p>
     </c:if>
+
 </c:forEach>
 <h1>blocked</h1>
 <c:forEach items="${user}" var="user">
@@ -37,5 +38,6 @@
     <input type="text" name="nameSearch">
     <input type="submit" value="search">
 </form>
+<a href="UserServlet?action=login">login</a>
 </body>
 </html>

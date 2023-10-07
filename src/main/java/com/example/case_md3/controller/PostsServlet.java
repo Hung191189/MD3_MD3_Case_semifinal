@@ -124,7 +124,8 @@ public class PostsServlet extends HttpServlet {
         List<User> userList = findAllUser(postsList);
         request.setAttribute("postsList", postsList);
         request.setAttribute("userList", userList);
-        request.getRequestDispatcher("posts/listPosts.jsp").forward(request, response);
+//        request.getRequestDispatcher("posts/listPosts.jsp").forward(request, response);
+        request.getRequestDispatcher("user/homePage.jsp").forward(request, response);
     }
 
     private List<User> findAllUser(List<Posts> postsList) {
