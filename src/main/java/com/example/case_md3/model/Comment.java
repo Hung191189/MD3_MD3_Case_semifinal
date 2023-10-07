@@ -3,6 +3,7 @@ package com.example.case_md3.model;
 import java.util.Date;
 
 public class Comment {
+    Date date = new Date();
     private int idComment;
     private String content;
     private Date dateComment;
@@ -17,6 +18,22 @@ public class Comment {
         this.idComment = idComment;
         this.content = content;
         this.dateComment = dateComment;
+        this.idUser = idUser;
+        this.idPosts = idPosts;
+        this.status = status;
+    }
+
+    public Comment(int idComment, String content, int idUser, int idPosts, int status) {
+        this.idComment = idComment;
+        this.content = content;
+        this.dateComment = date;
+        this.idUser = idUser;
+        this.idPosts = idPosts;
+        this.status = status;
+    }
+
+    public Comment(String content, int idUser, int idPosts, int status) {
+        this.content = content;
         this.idUser = idUser;
         this.idPosts = idPosts;
         this.status = status;

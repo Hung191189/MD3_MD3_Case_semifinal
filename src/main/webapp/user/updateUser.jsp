@@ -25,5 +25,6 @@
     <input type="hidden" name="status" value="1">
     <input type="submit" value="Save">
 </form>
+<a href="UserServlet">Back to list</a>
 </body>
 </html>

@@ -39,9 +39,9 @@ public class UserServlet extends HttpServlet {
             case "viewUser":
                 showUser(request, response);
                 break;
-//            case "findByName":
-//                showFindByName(request, response);
-//                break;
+            case "login":
+                showLogin(request, response);
+                break;
             default:
                 showListUser(request, response);
                 break;
@@ -53,24 +53,11 @@ public class UserServlet extends HttpServlet {
 
     }
 
-//    private void showFindByName(HttpServletRequest request, HttpServletResponse response) {
-//        String name = request.getParameter("name");
-//        List<User> userList = userService.findByName(name);
-//        RequestDispatcher dispatcher;
-//        if(userList == null){
-//            dispatcher = request.getRequestDispatcher("error-404.jsp");
-//        }else {
-//            request.setAttribute("user", userList);
-//            dispatcher = request.getRequestDispatcher("user/listUser.jsp");
-//        }
-//        try {
-//            dispatcher.forward(request, response);
-//        } catch (ServletException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private void showLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/loginForm.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
     private void restoreUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -184,11 +171,30 @@ public class UserServlet extends HttpServlet {
             case "findByName":
                 findByName(request, response);
                 break;
+            case "login":
+                loginUser(request, response);
+                break;
             default:
 
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loginUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String userName = request.getParameter("name");
+        String password = request.getParameter("password");
+        if(userService1.checkLogin(userName, password)){
+            request.setAttribute("name", userName);
+            HttpSession session = request.getSession();
+            session.setAttribute("name", userName);
+//            Thay đổi đường dẫn đến trang phù hợp
+            response.sendRedirect("index.jsp");
+        } else {
+            response.sendRedirect("/UserServlet?action=login");
         }
     }
 
@@ -206,7 +212,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -216,14 +222,16 @@ public class UserServlet extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
         User user = new User(id, name, age, email, address, password, status);
         userService.update(user);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/updateUser.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        showListUser(request,response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/updateUser.jsp");
+////        response.sendRedirect("/UserServlet");
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private void saveUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
