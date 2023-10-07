@@ -18,6 +18,13 @@ public class Image {
         this.status = status;
     }
 
+    public Image(String url, String titleImage, int idPosts, int status) {
+        this.url = url;
+        this.titleImage = titleImage;
+        this.idPosts = idPosts;
+        this.status = status;
+    }
+
     public int getStatus() {
         return status;
     }
